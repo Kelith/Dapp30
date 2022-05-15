@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 contract Deed {
   address public lawyer;
@@ -13,12 +13,12 @@ contract Deed {
     public {
     lawyer = _lawyer;
     beneficiary = _beneficiary; 
-    earliest = now + fromNow;
+    earliest = block.timestamp + fromNow;
   }
 
   function withdraw() public {
     require(msg.sender == lawyer, 'lawyer only');
-    require(now >= earliest, 'too early');
+    require(block.timestamp >= earliest, 'too early');
     beneficiary.transfer(address(this).balance);
   }
 }

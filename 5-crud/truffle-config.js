@@ -9,7 +9,7 @@ module.exports = {
   networks: {
     ropsten: {
       provider: () =>
-      // using my metamask wallet as provider
+      // using my metamask wallet as provider. You could use seed phrase or private key
         new HDWalletProvider(
           secrets.seed,
           `https://ropsten.infura.io/v3/${secrets.projectId}`
